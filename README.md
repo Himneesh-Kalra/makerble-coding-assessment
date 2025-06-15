@@ -136,4 +136,41 @@ Authorization: Bearer <your-jwt-token>
 
 ### Update Patient
 
-**PUT** \`/ap
+**PUT** `/api/patients/:id`
+
+```json
+{
+  "first_name": "Alice",
+  "last_name": "Brown",
+  "age": 29,
+  "gender": "female",
+  "diagnosis": "Cold"
+}
+```
+
+### Get All Patients
+
+**GET** `/api/patients`
+
+### Get Patient by ID
+
+**GET** `/api/patients/:id`
+
+### Delete Patient
+
+**DELETE** `/api/patients/:id`
+
+---
+
+## Roles
+
+| Role         | Permissions                  |
+| ------------ | ---------------------------- |
+| Receptionist | Create, Read, Update, Delete |
+| Doctor       | Read, Update                 |
+
+---
+
+## Author
+
+Built by **Himneesh Kalra**
