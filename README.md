@@ -16,10 +16,12 @@ A simple Golang-based RESTful API for managing patients in a Hospital setting wi
 
 * **Login & Registration** with JWT auth
 * **Receptionists** can:
-* Register new patients
-* Perform full CRUD operations on patients
+
+  * Register new patients
+  * Perform full CRUD operations on patients
 * **Doctors** can:
-* View and update patient records
+
+  * View and update patient records
 * Role-based middleware to protect endpoints
 
 ---
@@ -168,6 +170,13 @@ Authorization: Bearer <your-jwt-token>
 | ------------ | ---------------------------- |
 | Receptionist | Create, Read, Update, Delete |
 | Doctor       | Read, Update                 |
+
+---
+
+## Postman Documentation
+
+You can access and test all endpoints using the official Postman collection:
+👉 [Postman Documentation Link](https://documenter.getpostman.com/view/34567322/2sB2x8DqoU)
 
 ---
 
