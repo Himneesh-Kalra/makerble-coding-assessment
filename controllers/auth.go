@@ -9,7 +9,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// RegisterInput is the expected registration payload
 type RegisterInput struct {
 	Name     string `json:"name" binding:"required"`
 	Email    string `json:"email" binding:"required,email"`
@@ -41,7 +40,6 @@ func Login(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Generate JWT
 		token, err := utils.GenerateJWT(user)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to generate token"})
@@ -67,14 +65,12 @@ func Register(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Check if user already exists
 		var existing models.User
 		if err := db.Where("email = ?", input.Email).First(&existing).Error; err == nil {
 			c.JSON(http.StatusConflict, gin.H{"error": "User already exists"})
 			return
 		}
 
-		// Hash password
 		hashedPassword, err := utils.HashPassword(input.Password)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not hash password"})

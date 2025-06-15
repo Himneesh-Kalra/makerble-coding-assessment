@@ -32,7 +32,7 @@ func ConnectDB() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// Connection pooling
+	
 	sqlDB.SetMaxOpenConns(25)
 	sqlDB.SetMaxIdleConns(25)
 	sqlDB.SetConnMaxLifetime(5 * time.Minute)

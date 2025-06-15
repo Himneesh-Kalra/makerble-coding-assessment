@@ -14,7 +14,7 @@ func RegisterPatientRoutes(r *gin.RouterGroup, db *gorm.DB) {
 	r.GET("/:id", controllers.GetPatientByID(db))
 	r.PUT("/:id", controllers.UpdatePatient(db))
 
-	// Receptionist only
+	
 	r.POST("/", middleware.AuthMiddleware("receptionist"), controllers.CreatePatient(db))
 	r.DELETE("/:id", middleware.AuthMiddleware("receptionist"), controllers.DeletePatient(db))
 }

@@ -6,11 +6,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	// "github.com/Himneesh-Kalra/makerble-coding-assessment/models"
 	"github.com/Himneesh-Kalra/makerble-coding-assessment/utils"
 )
 
-// AuthMiddleware checks JWT and optionally enforces allowed roles.
 func AuthMiddleware(allowedRoles ...string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
@@ -26,7 +24,6 @@ func AuthMiddleware(allowedRoles ...string) gin.HandlerFunc {
 			return
 		}
 
-		// Optional: check if user's role is allowed
 		if len(allowedRoles) > 0 {
 			allowed := false
 			for _, role := range allowedRoles {
@@ -41,7 +38,6 @@ func AuthMiddleware(allowedRoles ...string) gin.HandlerFunc {
 			}
 		}
 
-		// Inject user into context
 		c.Set("user", user)
 
 		c.Next()

@@ -19,7 +19,7 @@ func NewApiServer(db *gorm.DB) *ApiServer {
 		DB:     db,
 	}
 
-	// Initialize routes
+	
 	server.setupRoutes()
 
 	return server
@@ -32,7 +32,7 @@ func (s *ApiServer) Start(addr string) error {
 func (s *ApiServer) setupRoutes() {
 	api := s.Router.Group("/api")
 
-	// Pass router group and DB to route registration functions
+	
 	routes.RegisterAuthRoutes(api.Group("/auth"), s.DB)
 	routes.RegisterPatientRoutes(api.Group("/patients"), s.DB)
 }

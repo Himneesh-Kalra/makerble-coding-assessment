@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	// Load env variables from .env file
+	
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("No .env file found. Using system env.")
@@ -25,13 +25,13 @@ func main() {
 		log.Fatalf("Failed to connect to DB: %v", err)
 	}
 
-	// Run auto migrations
+	
 	err = db.AutoMigrate(&models.User{}, &models.Patient{})
 	if err != nil {
 		log.Fatalf("AutoMigrate failed: %v", err)
 	}
 
-	// Start API server
+	
 	server := api.NewApiServer(db)
 	log.Println("Server starting on :8080")
 	if err := server.Start(":8080"); err != nil {
